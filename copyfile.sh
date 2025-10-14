@@ -1,7 +1,7 @@
 #!/bin/bash
 
-cp ../CRY/cry.typ ./cry.typ
-cp ../DS/ds.typ ./ds.typ
+cp ../CRY/cry.typ .CRY/cry.typ
+cp ../DS/ds.typ .DS/ds.typ
 
 git add .
 git commit -m updates
