@@ -319,3 +319,55 @@ Abbiamo quindi dimostrato che lo shift cypher, se
 usato per crittografare una sola lettera, gode
 della proprietà della _perfect secrecy_.
 
+#pagebreak()
+= Altri modi per definire la _perfect secrecy_
+In questo capitolo verranno presentati nuovi modi per definire
+la _perfect secrecy_. Partiamo ricordando la prima definizone data:
+Sia $Pi = (Gen, Enc, Dec)$ uno schema di crittografia a chiave privata. Diciamo che $Pi$ gode di _perfect secracy_ se e solo se
+$forall$ distribuzione di probabilità su $Pp$:
+$
+  forall m in Pp. forall c in Cc. Pr(P=m|C=c)=Pr(P=m)
+$
+
+Prendiamo nuovamente l'esempio dello shift cypher:
+
+$
+  Pr(k=25)=1/2 Space Pr(K=k)=1/50 forall k in 0...24
+$
+
+assumiamo:
+
+$
+  forall m in Pp : Pr(P=m)>0 
+$
+
+Per dimostrare che non ha _perfect secrecy_ dobbiamo trovare un
+caso in cui $Pr(P=m|C=c) != Pr(P=m)$. Dimostriamo quindi che, per esempio, $Pr(P=0|C=25) != Pr(P=0)$.
+#linebreak()
+#linebreak()
+$Pr(P=0|C=25) = (Pr(C=25|P=0)Pr(P=0))/(Pr(C=25))$
+
+Andiamo ad analizzare il numeratore e denominatore separatamente:
+#linebreak()
+#linebreak()
+$Pr(C=25|P=0) = limits(sum)_(Enc_k(m) = 25) Pr(K=k) = Pr(K=25) = 1/2$
+#linebreak()
+#linebreak()
+$Pr(C=25) = limits(sum)_(Enc_k(m) = 25) Pr(K=k)Pr(P=m) =\ =Pr(K=25)=Pr(P=0) + [Pr(K=0)Pr(P=25)+Pr(K=1)Pr(P=24)+...] = \
+= 1/2 Pr(P=0) + 1/50 limits(sum)_(x=1)^25 Pr(P=x)= Space ("tutte le " Pr(K=k) "sono le stesse")\
+=1/2 Pr(P=0) + 1/50 (1-Pr(P=0)) " che è " < 1/2Pr(P=0) + 1/2(1-Pr(P=0))$
+
+Possiamo adesso sostituire i risultati ottenuti nell'equazione:
+
+$
+  Pr(P=0|C=25) = (Pr(C=25|P=0)Pr(P=0))/(Pr(C=25)) = (1/2 Pr(P=0))/(<1/2) arrow.r.double > Pr(P=0)
+$
+
+== *PS1*
+Diamo una nuova definizione di _perfect secrecy_, che chiameremo *PS1*:
+
+$
+Pi "gode di" italic("perfect secrecy") arrow.l.r.double forall " distribuzione di probabilità su " Pp.\ space forall y in Cc. forall x in Pp. Pr(C=y | P=x) = Pr(C=y)
+$
+
+
