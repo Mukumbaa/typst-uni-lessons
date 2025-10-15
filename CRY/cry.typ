@@ -353,8 +353,8 @@ Andiamo ad analizzare il numeratore e denominatore separatamente:
 $Pr(C=25|P=0) = limits(sum)_(Enc_k(m) = 25) Pr(K=k) = Pr(K=25) = 1/2$
 #linebreak()
 #linebreak()
-$Pr(C=25) = limits(sum)_(Enc_k(m) = 25) Pr(K=k)Pr(P=m) =\ =Pr(K=25)=Pr(P=0) + [Pr(K=0)Pr(P=25)+Pr(K=1)Pr(P=24)+...] = \
-= 1/2 Pr(P=0) + 1/50 limits(sum)_(x=1)^25 Pr(P=x)= Space ("tutte le " Pr(K=k) "sono le stesse")\
+$Pr(C=25) = limits(sum)_(Enc_k(m) = 25) Pr(K=k)Pr(P=m)\ =Pr(K=25)=Pr(P=0) + [Pr(K=0)Pr(P=25)+Pr(K=1)Pr(P=24)+...]\
+= 1/2 Pr(P=0) + 1/50 limits(sum)_(x=1)^25 Pr(P=x) Space "tutte le " Pr(K=k) "sono le stesse"\
 =1/2 Pr(P=0) + 1/50 (1-Pr(P=0)) " che è " < 1/2Pr(P=0) + 1/2(1-Pr(P=0))$
 
 Possiamo adesso sostituire i risultati ottenuti nell'equazione:
@@ -369,5 +369,73 @@ Diamo una nuova definizione di _perfect secrecy_, che chiameremo *PS1*:
 $
 Pi "gode di" italic("perfect secrecy") arrow.l.r.double forall " distribuzione di probabilità su " Pp.\ space forall y in Cc. forall x in Pp. Pr(C=y | P=x) = Pr(C=y)
 $
+
+*Dimostrazione ($arrow.l.double$)*
+
+Assumiamo che $Pi$ ha _perfect secrecy_, allora siano $y in Cc, x in Pp$:
+
+$
+  Pr(C=y|P=x) &= (Pr(P=x|C=y)Pr(C=y))/Pr(P=x) Space "per il teorema di Bayes"\
+  &= (Pr(P=x)Pr(C=y))/Pr(P=x) Space "perchè assumiamo la " italic("perfect secrecy")\
+  &= Pr(C=y)
+$
+
+*Dimostrazione ($arrow.r.double$)*
+
+Assumiamo che $Pi$ ha _perfect secrecy_, allora siano $y in Cc, x in Pp$:
+
+$
+  Pr(P=x|C=y) &= (Pr(C=y|P=x)Pr(P=x))/Pr(C=y)\ &= (Pr(C=y)Pr(P=x))/Pr(C=y)\ &= Pr(P=x)
+$
+
+*METTERE ESEMPI*
+
+== *PS2*
+Vediamo la seconda definizione di _perfect secrecy_:
+
+$Pi$ è perfetto $arrow.r.l.double$ per ogni distribuzione di probabilità su $Pp$:
+
+$
+  forall y in Cc. forall x_0,x_1 in Pp : Pr(C=y|P=x_0) = Pr(C=y|P=x)
+$
+
+TH: *PS* $arrow.l.r.double$ *PS2*
+
+*Dimostrazione ($arrow.r.double$)*
+
+Assumiamo che ci sia _perfect secrecy_:
+
+$
+  Pr(C=y|P=x_0) = Pr(C=y) = Pr(C=y|P=x_1)\
+  #hide("") arrow.t #hide("______________") arrow.t\
+  #hide("") "PS1" #hide("___________") "PS1"\
+$
+
+*Dimostrazione ($arrow.l.double$)*
+
+Assumiamo la formula data prima:
+
+$
+  forall y in Cc. forall x_0,x_1 in Pp : Pr(C=y|P=x_0) = Pr(C=y|P=x)
+$
+
+Siano $x_0 in Pp, y in Cc$. Sia $P_y = Pr(C=y|P=x_0)$.
+
+Per la formula riportata prima,
+$
+  Pr(C=y|P=x) = Pr(C=y|P=x_0) = P_y
+$
+
+Allora:
+
+$
+  Pr(C=y) &= limits(sum)_(x in Pp) Pr(c=y|P=x)Pr(P=x)\
+  &= limits(sum)_(x in Pp) P_y Pr(P=x) Space "per quello spiegato sopra"\
+  &= P_y limits(sum)_(x in Pp) Pr(P=x) Space "perchè" P_y "è una costante"\
+  &= P_y
+$
+
+*METTERE ESEMPI*
+
 
 
