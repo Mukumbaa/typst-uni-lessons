@@ -377,7 +377,7 @@ $
 == *PS1*
 Diamo una nuova definizione di _perfect secrecy_, che chiameremo *PS1*:
 
-*Teorema 1*
+*Teorema 1*:
 $
 Pi "gode di" italic("perfect secrecy") arrow.l.r.double forall " distribuzione di probabilità su " Pp.\ space forall y in Cc. forall x in Pp. Pr(C=y | P=x) = Pr(C=y)
 $
@@ -457,7 +457,7 @@ $
 $
 
 
-*Teorema 2*
+*Teorema 2*:\
 $Pi$ è perfetto $arrow.r.l.double$
 $
   forall y in Cc. forall x_0,x_1 in Pp. Pr(Enc_k (x_0) = y) = Pr(Enc_k (x_1) = y)
