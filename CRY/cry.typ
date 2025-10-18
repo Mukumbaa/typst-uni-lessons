@@ -442,8 +442,8 @@ Allora:
 
 $
   Pr(C=y) &= limits(sum)_(x in Pp) Pr(c=y|P=x)Pr(P=x)\
-  &= limits(sum)_(x in Pp) P_y Pr(P=x) Space "per quello spiegato sopra"\
-  &= P_y limits(sum)_(x in Pp) Pr(P=x) Space "perchè" P_y "è una costante"\
+  &= limits(sum)_(x in Pp) P_y Pr(P=x) Space &&"per quello spiegato sopra"\
+  &= P_y limits(sum)_(x in Pp) Pr(P=x) Space &&"perchè" P_y "è una costante"\
   &= P_y
 $
 
@@ -470,11 +470,11 @@ $
 $
 Passaggi:
 $
-  Pr(C=y|P=x) &= Pr(Enc_k (P) = y|P=x) Space "definizione di variabile casuale C"\
-  &=  Pr(Enc_k (x) = y| P=x) Space "perchè " P=x\
-  &= Pr(Enc_k (x)=y) Space "perchè " k "è indipendente da " P  
+  Pr(C=y|P=x) &= Pr(Enc_k (P) = y|P=x) Space &&"definizione di variabile casuale C"\
+  &=  Pr(Enc_k (x) = y| P=x) Space &&"perchè" P=x\
+  &= Pr(Enc_k (x)=y) Space &&"perchè" k "è indipendente da " P  
 $
-#v(1em)
+
 == Riassunto delle definzioni equaivalenti
 
 Riporto di seguito sia la prima definzione data di _perfect secrecy_ che le equivalenti viste adesso, con il loro significato:
@@ -541,6 +541,9 @@ $
 *Teorema 3*:
 #align(center)[$Pi$ gode di #PS $arrow.r.l.double Pi$ gode di #PI]
 
-
+*Esempio*:
+Sia $Pi$ lo schema Vigenère per i messaggi di due caratteri, dove
+il periodo (lunghezza della chiave) è scelto uniformemente in ${1,2}$. Per dimostrare che $Pi$ non è #PI, stabiliamo un _adversary_
+#Mm per il quale $Pr(PrivK = 1) > 1/2$.
 
 
