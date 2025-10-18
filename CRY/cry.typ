@@ -3,14 +3,16 @@
 ]
 
 
+#let Aa = $cal(A)$
+#let Mm = $cal(M)$
 #let Cc = $cal(C)$
 #let Pp = $cal(P)$
 #let Kk = $cal(K)$
 #let Gen = $mono("Gen")$
 #let Enc = $mono("Enc")$
 #let Dec = $mono("Dec")$
-#let PrivK = 
-// $PrivK_(M,Pi)^"eav"$#let Space = "    "
+#let PrivK = $mono("PrivK")_(M,Pi)^mono("eav")$
+#let Space = "    "
 #let PS = {
   text(style: "italic", "perfect secrecy")
 }
@@ -518,7 +520,18 @@ la stessa cosa ma in modo operativo; anche se permettiamo al _adversary_ di sceg
 uno dei due, non ha nessun modo di capire quale dei due messaggi
 è stato cifrato.  
 
-Definiamo l'esperimento di #PI $PrivK_(M,Pi)^"eav"$ 
+Definiamo l'esperimento di #PI $space PrivK$:
++ L'_adversary_ #Mm crea una coppia di messaggi $m_0,m_1 in Pp$
++ Una chiave $k in Kk$ casuale è generata, e un bit uniforme $b in {0,1}$ è scelto. Il messaggio $m_b$ viene scelto (ogni messaggio ha probabilità di $1/2$ perchè $b$ è uniforme) e crittografato con $k$. Il messaggio cifrato è dato ad #Mm
++ #Mm da una ipotesi su quale dei due messaggi è stato crittografato dando come output un bit $b'$
++ L'output dell'esperimento è $1$ se $b'=b$, $0$ altrimenti.
+Scriviamo $PrivK=1$ se l'output dell'esperimento è $1$ e in questo caso diciamo che #Mm ha avuto successo.
+
+#Mm ha successo se indovina in modo corretto. Uno schema di
+crittografia ha #PI se _nessun adversary_ #Mm riesce in questo
+esperimento con una probabilità maggiore di $1/2$ (non è
+imposto nessun limite di computazione accessibile all'_adversary_ #Mm). 
+
 
 
 
