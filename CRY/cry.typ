@@ -508,8 +508,8 @@ In questo caso si guarda direttamente alla funzione di cifratura casuale #Enc, c
 
 #v(1em)
 #pagebreak()
-= Perfect indistinguishability
-Le _perfect indistinguishability_ è un'altra definzione equivalente di _perfect secrecy_. Questa definzione è basata
+= Perfect indistinguishability (Libro pag. 29)
+La _perfect indistinguishability_ è un'altra definzione equivalente di _perfect secrecy_. Questa definzione è basata
 su un esperimento che coinvolge un _adversary_ che osserva
 passivamente un testo cifrato e poi prova a indovinare quale
 fra due messaggi era stato cifrato.
@@ -525,7 +525,7 @@ Definiamo l'esperimento di #PI $space PrivK$:
 + Una chiave $k in Kk$ casuale è generata, e un bit uniforme $b in {0,1}$ è scelto. Il messaggio $m_b$ viene scelto (ogni messaggio ha probabilità di $1/2$ perchè $b$ è uniforme) e crittografato con $k$. Il messaggio cifrato è dato ad #Mm
 + #Mm da una ipotesi su quale dei due messaggi è stato crittografato dando come output un bit $b'$
 + L'output dell'esperimento è $1$ se $b'=b$, $0$ altrimenti.
-Scriviamo $PrivK=1$ se l'output dell'esperimento è $1$ e in questo caso diciamo che #Mm ha avuto successo.
+Scriviamo $PrivK=1$ se l'output dell'esperimento è 1 e in questo caso diciamo che #Mm ha avuto successo.
 
 #Mm ha successo se indovina in modo corretto. Uno schema di
 crittografia ha #PI se _nessun adversary_ #Mm riesce in questo
@@ -539,8 +539,7 @@ $
 $
 
 *Teorema 3*:
-#align(center)[$Pi$ è #PS $arrow.r.l.double Pi$ è #PI] 
-
+#align(center)[$Pi$ gode di #PS $arrow.r.l.double Pi$ gode di #PI]
 
 
 
