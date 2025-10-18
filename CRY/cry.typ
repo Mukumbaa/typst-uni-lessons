@@ -9,7 +9,16 @@
 #let Gen = $mono("Gen")$
 #let Enc = $mono("Enc")$
 #let Dec = $mono("Dec")$
-#let Space = "    "
+#let PrivK = 
+// $PrivK_(M,Pi)^"eav"$#let Space = "    "
+#let PS = {
+  text(style: "italic", "perfect secrecy")
+}
+#let PI = {
+  text(style: "italic", "perfect indistinguishability")
+}
+// #let PS = #emph[perfect secrecy]
+// #let PI = #emph[perfect indistinguishability]
 
 #v(1em)
 = Introduzione
@@ -213,7 +222,7 @@ Ad esempio:
 $
 cal(A) = "There are more 1s then 0s"\
 cal(A) = {011,101,110,111}\
-Pr(cal(A)) = 4 * 1/8 = 1/2
+Pr(cal(A)) = 4 dot 1/8 = 1/2
 $
 Definiamo $Pr$ la distribuzione di probabilità
 su $cal(U)$. Una variabile casuale è una funzione $X:cal(U) arrow V$, la $Pr'$ distribuzione di probabilità
@@ -366,6 +375,7 @@ $
 == *PS1*
 Diamo una nuova definizione di _perfect secrecy_, che chiameremo *PS1*:
 
+*Teorema 1*
 $
 Pi "gode di" italic("perfect secrecy") arrow.l.r.double forall " distribuzione di probabilità su " Pp.\ space forall y in Cc. forall x in Pp. Pr(C=y | P=x) = Pr(C=y)
 $
@@ -388,11 +398,11 @@ $
   Pr(P=x|C=y) &= (Pr(C=y|P=x)Pr(P=x))/Pr(C=y)\ &= (Pr(C=y)Pr(P=x))/Pr(C=y)\ &= Pr(P=x)
 $
 
-*METTERE ESEMPI*
 
 == *PS2*
 Vediamo la seconda definizione di _perfect secrecy_:
 
+*Teorema 2*
 $Pi$ è perfetto $arrow.r.l.double$ per ogni distribuzione di probabilità su $Pp$:
 
 $
@@ -435,7 +445,84 @@ $
   &= P_y
 $
 
-*METTERE ESEMPI*
+
+ == *PS3*
+Aggiungiamo prima una variabile casuale che sarà autile:
+
+Per ogni $x in Pp$, sia $E_k (x)$ una variabile casuale definita come:
+$
+  Pr(Enc_k (x) = y) = sum {Pr(K=k) | k in Kk, Enc_k (x) = y}
+$
+
+
+*Teorema 2*
+$Pi$ è perfetto $arrow.r.l.double$
+$
+  forall y in Cc. forall x_0,x_1 in Pp. Pr(Enc_k (x_0) = y) = Pr(Enc_k (x_1) = y)
+$
+
+*Dimostrazione*
+Per il *Teorema 2* possiamo ridurre per mostrare che:
+$
+  forall x in Pp, y in Cc : Pr(Enc_k (x) = y) = Pr(C=y|P=x)
+$
+Passaggi:
+$
+  Pr(C=y|P=x) &= Pr(Enc_k (P) = y|P=x) Space "definizione di variabile casuale C"\
+  &=  Pr(Enc_k (x) = y| P=x) Space "perchè " P=x\
+  &= Pr(Enc_k (x)=y) Space "perchè " k "è indipendente da " P  
+$
+#v(1em)
+== Riassunto delle definzioni equaivalenti
+
+Riporto di seguito sia la prima definzione data di _perfect secrecy_ che le equivalenti viste adesso, con il loro significato:
+
+- _perfect secrecy_:
+$
+  forall x in Pp, forall y in Cc, Pr(P=x|C=y) = Pr(P=x)
+$
+sapere che il messaggio cifrato è $y$, non cambia la probabilità che il messaggio chiaro fosse $x$.
+
+- *PS1*:
+$
+  Pi "è perfetto" arrow.r.l.double
+  forall x in Pp, forall y in Cc, Pr(C=y|P=x) = Pr(C=y)
+$
+la probabilità di ottenere un certo cifrato $y$ non dipende dal messaggio $x$.
+
+- *PS2*:
+$
+  Pi "è perfetto" arrow.r.l.double
+  forall y in Cc, forall x_0,x_1 in Pp, Pr(C=y|P=x_0) = Pr(C=y|P=x_1)
+$
+tutti i messaggi producono lo stesso comportamente porbabilistico del cifrato. Ovvero guardando $y$, non puoi dire se il messaggio era $x_0 space"o"space x_1$.
+
+- *PS3*:
+$
+  Pi "è perfetto" arrow.l.r.double
+  forall y in Cc, forall x_0,x_1 in Pp, Pr(Enc_k (x_0) = y)=Pr(Enc_k (x_1) = y)
+$
+In questo caso si guarda direttamente alla funzione di cifratura casuale #Enc, cioè la distribuzione dei cifrati che produce ogni messaggio. #upper("è") l'evoluzione della *PS2* e ha lo stesso significato.
+
+#v(1em)
+#pagebreak()
+= Perfect indistinguishability
+Le _perfect indistinguishability_ è un'altra definzione equivalente di _perfect secrecy_. Questa definzione è basata
+su un esperimento che coinvolge un _adversary_ che osserva
+passivamente un testo cifrato e poi prova a indovinare quale
+fra due messaggi era stato cifrato.
+
+Con la #PS dicevamo che guardando un messaggio cifrato, non si
+doveva imparare niente sul messaggio originale. Con la #PI diciamo
+la stessa cosa ma in modo operativo; anche se permettiamo al _adversary_ di scegliere due messaggi e mostrando il cifrato di
+uno dei due, non ha nessun modo di capire quale dei due messaggi
+è stato cifrato.  
+
+Definiamo l'esperimento di #PI $PrivK_(M,Pi)^"eav"$ 
+
+
+
+
 
 
 
