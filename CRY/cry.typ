@@ -533,7 +533,7 @@ esperimento con una probabilità maggiore di $1/2$ (non è
 imposto nessun limite di computazione accessibile all'_adversary_ #Mm). La #PI richiede che sia impossibile per #Mm fare di meglio.
 
 #v(1em)
-*Definizione*: Uno schema $Pi$ è #PI se e solo se:
+*Definizione*:\ Uno schema $Pi$ è #PI se e solo se:
 $
   forall Mm. space Pr(PrivK = 1) = 1/2
 $
@@ -541,9 +541,39 @@ $
 *Teorema 3*:
 #align(center)[$Pi$ gode di #PS $arrow.r.l.double Pi$ gode di #PI]
 
-*Esempio*:
+*Esempio*:\
 Sia $Pi$ lo schema Vigenère per i messaggi di due caratteri, dove
 il periodo (lunghezza della chiave) è scelto uniformemente in ${1,2}$. Per dimostrare che $Pi$ non è #PI, stabiliamo un _adversary_
 #Mm per il quale $Pr(PrivK = 1) > 1/2$.
 
+L'_adversary_ #Mm fa:
++ output $m_0="aa"$ and $m_1="ab"$
++ quando riceve il messaggio cifrato $c=c_1c_2$, se $c_1=c_2$ restiuisce 0; altrimenti 1.
 
+Calcoliamo la $Pr(PrivK = 1)$:
+$
+  &Pr(PrivK=1)\
+  &=1/2 Pr(PrivK =1 | b=0)+1/2 Pr(PrivK = 1 | b=1)\
+  &=1/2 Pr(Mm "outputs" 0 | b=0)+1/2 Pr(Mm "outputs" 1 | b=1) 
+$
+dove $b$ è un bit uniforme che determina quale messaggio viene
+crittografato. Come definito, #Mm da 0 se e solo se i due caratteri del cifrato $c=c_1c_2$ sono uguali. Quando $b=0$ (quindi
+$m_0=mono("aa")$ viene cifrato) allora $c_1=c_2$ se (1) la chiave ha periodo 1, o (2) la chiava scelta di periodo 2 ha entrabi i caratteri uguali. Il primo si verifica con probabilità $1/2$, il secondo si verifica invece con probabilità $1/26$. Quindi:
+$
+  Pr(Mm "outputs" 0 | b = 0) = 1/2 + 1/2 dot 1/26 approx 0.52
+$
+
+Quando $b=1$ allora $c_1=c_2$ solo viene scelta una chiave di
+periodo 2 e il primo carattere della chiave è di uno più grande
+rispetto al secondo carattere della chiave. Questo avviene con
+probabilità $1/2 dot 1/26$. Quindi:
+$
+  Pr(Mm "outputs" 1 | b=1) = 1-Pr(Mm "outputs" 0 | b=1) = 1 - 1/2 dot 1/26 approx 0.98
+$
+
+Possiamo ora sostituire questi risultati nella formula di prima dove abbiamo calcolato $Pr(PrivK = 1)$:
+$
+  Pr(PrivK = 1) = 1/2 dot (1/2 + 1/2 dot 1/26 + 1- 1/2 dot 1/26) = 0.75 > 1/2
+$
+
+che dimostra che lo schema non gode di #PI.
