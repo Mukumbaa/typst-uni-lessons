@@ -538,7 +538,7 @@ $
   forall Mm. space Pr(PrivK = 1) = 1/2
 $
 
-*Teorema 3*:
+*Teorema 3*:\
 #align(center)[$Pi$ gode di #PS $arrow.r.l.double Pi$ gode di #PI]
 
 *Esempio*:\
@@ -577,3 +577,12 @@ $
 $
 
 che dimostra che lo schema non gode di #PI.
+
+== Teorema di Shannon
+*Teorema*:\
+uno schema di crittografia ($Pp, Cc, Kk, Gen, Enc, Dec$) con $|Pp|=|Cc|=|Kk|$ è perfetto se e solo se:
+#v(1em)
+$
+  1.& Space forall x in Pp. forall y in Cc. exists_1 k in Kk. Enc_k (x) = y\
+  2.& Space forall k in Kk. Pr(k)=1/(|Kk|)
+$
