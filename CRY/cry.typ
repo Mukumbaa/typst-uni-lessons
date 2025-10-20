@@ -626,15 +626,42 @@ Facciamo ora delle decisioni sui prossimi problemi che faremo:
 + Come misuriamo la grandezza dell'input?: numero di celle occupate l'input nel tape della TM
 + Che tipo di analisi facciamo?: #underline("caso peggiore")/caso medio
 
-
+== Esempio di Macchina di Turing
+Prendiamo il linguaggio:
+$
+  L_2={0^n 1^m|n,m > 0}
+$
 #import "@preview/fletcher:0.5.8" as fletcher: diagram, node, edge
+#align(center)[
+  
+  #diagram(
+    debug: false,
+    spacing: 5em,
+    node((0,0), $q_0$, stroke: 1pt),
+    node((1,0),$q_1$, stroke: 1pt),
+    node((2,0),$q_2$, stroke: 1pt),
+    node((0,1),$q_3$, stroke: 1pt),
+    node((2,1),$h$, stroke: 1pt),
+  
+    edge((0,0),(1,0), `0/_/R`, "->"),
+    edge((1,0),(1,0), `0/_/R`, "->", bend:130deg),
+    edge((1,0),(2,0), `1/_/R`, "->"),
+    edge((0,0),(0,1),`1/_/R`, "->"),
+    edge((0,1),(0,1),`0/_/R or 1/_/R`,"->" ,bend: -130deg),
+    edge((0,1),(2,1),`_/0/R`, "->"),
+    edge((2,0),(2,0),`1/_/R`,"->",bend: 130deg),
+    edge((2,0),(2,1),`1/_/R`,"->")
+  )
+]
+#v(1em)
+Sia $M$ una TM deterministica. Sia $f: NN -> NN$ tale che: per ogni input $x$, $M(x)$ termina entro $f(|x|)$ step. In questo caso
+diciamo che $M$ ha time complexity $f$.
 
-#diagram(
-  debug: true,
-  spacing: 5em,
-  node((0,0), $q_0$, stroke: 1pt),
-  edge((0,0),(1,0), `0/_/R`, "->"),
-  node((1,0),$q_1$, stroke: 1pt),
-  edge((1,0),(1,0), `0/_/R`,"->", deg:130deg)
-)
+Nel caso di prima, $M_2$ ha time complexity $f(n) = n$.
+
+Sia $f: NN->NN$, definiamo il set di funzioni:
+$
+  O(g)={f: NN->NN | exists c,n_0. forall n >=n_0, f(n)<=c dot g(n)}
+$
+se $f in O(g)$ diciamo che $g$ è un asintoto superiore di $f$.
 
