@@ -621,10 +621,10 @@ Una classe di complessità è un set di problemi decisionali.
 Facciamo ora delle decisioni sui prossimi problemi che faremo:
 
 + modello di computazione: Macchina di Turing
-+ che tipo di risorse teniamo in considerazione?: #underline("Time")/Space
-+ Come misuriamo il costo di utilizzare le risorse?: numero di steps della Macchina
-+ Come misuriamo la grandezza dell'input?: numero di celle occupate l'input nel tape della TM
-+ Che tipo di analisi facciamo?: #underline("caso peggiore")/caso medio
++ che tipo di risorse teniamo in considerazione? #underline("Time")/Space
++ Come misuriamo il costo di utilizzare le risorse? numero di steps della Macchina
++ Come misuriamo la grandezza dell'input? numero di celle occupate l'input nel tape della TM
++ Che tipo di analisi facciamo? #underline("caso peggiore")/caso medio
 
 == Esempio di Macchina di Turing
 Prendiamo il linguaggio:
