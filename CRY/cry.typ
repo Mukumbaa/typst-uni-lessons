@@ -586,3 +586,55 @@ $
   1.& Space forall x in Pp. forall y in Cc. exists_1 k in Kk. Enc_k (x) = y\
   2.& Space forall k in Kk. Pr(k)=1/(|Kk|)
 $
+
+== L'impraticalità della #PS
+La #PS non è pratica per la crittografia di massa, poichè richiede
+che $|Kk| >= |Pp|$. Questo implica che, per scambiare un messaggio in segretezza di n bits su un channel publico, dobbiamo per forza
+usare una chiave di $>=$ n bits su un channel privato.
+
+#pagebreak()
+= Segretezza Computazionale
+Riprendiamo la definizione di #PS: "_il messaggio cifrato non da
+nessun tipo di informazione sul messaggio_".
+$
+  forall m in Pp. forall c in Cc. Pr(m|c)=Pr(m)
+$
+Ricordiamo anche il *teorema*: se $Pi$ ha #PS, allora $|Kk|>=|Pp|$ (
+$arrow.r.double$ la chiave deve essere almeno lunga quanto la lunghezza del messaggio). Questa è una limitazione molto importante; per superarla è necessario revisionare la definizione
+di segretezza.
+
+Questo è possibile con la _Computational secrecy_ : "_il messaggio cifrato non da (quasi) nessun tipo di informazioni che possono essere astratti in modo *efficace*_".
+
+Entriamo nella branca delle Computational Complexity Theory, che si basa su Decision Problems, ovvero problemi le queli soluzioni
+possono essere o _yes_ o _no_.
+
+Formalmente, i problemi decisionali possono essere definiti come
+_Linguaggi_, ad esempio:\
++ $L_1 = {w in {0,1}^* | |w| "is even"} = {epsilon, 00,01,10,11,0000,...}$
++ $L_2 = {0^n 1^m | n,m >0}$
++ $L_3 = {0^k 1^k | k > 0}$
++ $L_4 = {n | n "is prime"}$
+
+Un linguaggio alla fine è un sub-set finito $Sigma$, dove $Sigma^*$ è il set di tutte le sequenze finite di simboli in $Sigma$. Quindi: $L subset.eq Sigma^*$.
+
+Una classe di complessità è un set di problemi decisionali.
+Facciamo ora delle decisioni sui prossimi problemi che faremo:
+
++ modello di computazione: Macchina di Turing
++ che tipo di risorse teniamo in considerazione?: #underline("Time")/Space
++ Come misuriamo il costo di utilizzare le risorse?: numero di steps della Macchina
++ Come misuriamo la grandezza dell'input?: numero di celle occupate l'input nel tape della TM
++ Che tipo di analisi facciamo?: #underline("caso peggiore")/caso medio
+
+
+#import "@preview/fletcher:0.5.8" as fletcher: diagram, node, edge
+
+#diagram(
+  debug: true,
+  spacing: 5em,
+  node((0,0), $q_0$, stroke: 1pt),
+  edge((0,0),(1,0), `0/_/R`, "->"),
+  node((1,0),$q_1$, stroke: 1pt),
+  edge((1,0),(1,0), `0/_/R`,"->", deg:130deg)
+)
+
