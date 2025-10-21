@@ -665,3 +665,25 @@ $
 $
 se $f in O(g)$ diciamo che $g$ è un asintoto superiore di $f$.
 
+Prendiamo come esempio la $f(n) = 3n^3+2n+5$, in questo caso $f in O(n^2)$.
+
+Consideriamo una $g:NN->NN$. La classe di complessità $"TIME"(g)$ è un set di problemi decisionali che sono decisi da delle TM con complessità di tempo in $O(g)$.
+
+Questa definizone non è robusta, perchè la $"TIME"(g)$ può cambiare cambiando il numero di tape nella TM. Cosa dovremmo scegliere allora come punto di riferimento per la complessità?
+
+Enunciamo il seguente teorema:\
+*Teorema*:\
+sia $L$ un problema decisionale deciso da una TM deterministica con k-tape in $O(g)$. Allora esiste una TM deterministica con 1
+tape che decide $L$ in $O(g^2)$.
+
+Definiamo quindi una nuova classe di complessità $P=limits(U)_(k>=0)"TIME"(n^k)$. In crittografia, algoritmi polinomiali sono considerati efficienti.
+
+Quindi definiamo $N P={L|exists "non-deterministic TM that decides" L "in polinomial time"}$, e quindi $P subset.eq N P$.  
+
+
+
+
+
+
+
+
