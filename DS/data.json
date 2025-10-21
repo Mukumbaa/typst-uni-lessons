@@ -1,0 +1,49 @@
+{
+  "macros": [
+    {
+      "name": "calorie",
+      "q": 600
+    },
+    {
+      "name": "protein",
+      "q": 50
+    },
+    {
+      "name": "calcium",
+      "q": 0.7
+    }
+  ],
+
+  "foods": [
+    {
+      "name": "bread",
+      "c": 0.1,
+      "q": 4,
+      "macros": [30, 5, 0.02]
+    },
+    {
+      "name": "milk",
+      "c": 0.5,
+      "q": 3,
+      "macros": [50, 15, 0.15]
+    },
+    {
+      "name": "egg",
+      "c": 0.12,
+      "q": 1,
+      "macros": [150, 30, 0.05]
+    },
+    {
+      "name": "meat",
+      "c": 0.9,
+      "q": 2,
+      "macros": [180, 90, 0.08]
+    },
+    {
+      "name": "cake_slice",
+      "c": 1.3,
+      "q": 2,
+      "macros": [400, 70, 0.01]
+    }
+  ]
+}
